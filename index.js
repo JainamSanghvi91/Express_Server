@@ -10,6 +10,10 @@ const app = express(); //This tells that our application is going to use express
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 
+const dishRouter = require('./routes/dishRouter');
+
+app.use('/dishes', dishRouter);
+
 app.all('/dishes', (req,res,next) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
