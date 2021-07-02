@@ -10,9 +10,16 @@ const app = express(); //This tells that our application is going to use express
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 
-const dishRouter = require('./routes/dishRouter');
+// const dishRouter = require('./routes/dishRouter');
+// app.use('/dishes', dishRouter);
+
+var dishRouter = require('./routes/dishRouter');
+var leaderRouter = require('./routes/leaderRouter');
+var promoRouter = require('./routes/promoRouter');
 
 app.use('/dishes', dishRouter);
+app.use('/leadership', leaderRouter);
+app.use('/promotions', promoRouter);
 
 //Here we can see we have done 2 setups for app.use() and it will work in order top to bottom like if we found the URL that satisfies
 //in 1st setup then the result will be given by that otherwise it will go in 2nd setup and so on .. because we have not handled the case
